@@ -24,3 +24,49 @@
         </button>
     </div>
 </form>
+
+
+<form [formGroup]="signUpForm" (ngSubmit)="submitForm()" *ngIf="showForm" class="overlay">
+    <div class="pop-up">
+        <mat-form-field appearance="fill">
+            <mat-label>UserName👩</mat-label>
+            <input matInput type="text" formControlName="nameSignUp" />
+        </mat-form-field>
+        <div *ngIf="loginForm.get('nameSignUp')?.invalid && loginForm.get('nameSignUp')?.touched">
+            Invalid UserName---😣
+        </div>
+        <mat-form-field appearance="fill">
+            <mat-label>Password🔐</mat-label>
+            <input matInput [type]="hide() ? 'password' : 'text'" formControlName="passwordSignUp" />
+            <button mat-icon-button matSuffix type="button" (click)="hide.set(!hide())"
+                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+        </mat-form-field>
+        <div *ngIf="loginForm.get('passwordSignUp')?.invalid && loginForm.get('passwordSignUp')?.touched">
+            Password is required---🔑
+        </div>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Role🫡</mat-label>
+            <input matInput type="text" formControlName="roleSignUp" />
+        </mat-form-field>
+        <div *ngIf="loginForm.get('roleSignUp')?.invalid && loginForm.get('roleSignUp')?.touched">
+            Invalid UserRole---😣
+        </div>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid">
+            Sign Up
+        </button>
+
+        <button mat-raised-button color="primary" (click)="showForm = false" id="cancel-button">
+            Cancel
+        </button>
+
+    </div>
+</form>
+
+
+<button mat-raised-button color="primary" (click)="showForm=true" id="new-subscriber">
+    New subscriber
+</button>

@@ -8,6 +8,33 @@
   justify-content: center;
   align-items: center;
 }
+.pop-up {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 400px;
+  z-index: 1000;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+#cancel-button{
+  display: block;
+  margin: 20px auto 0 auto;
+}
 
 .container {
   background: white;
@@ -41,4 +68,12 @@ div[ngIf] {
   0% {background-position: 0% 50%;}
   50% {background-position: 100% 50%;}
   100% {background-position: 0% 50%;}
+}
+
+
+#new-subscriber{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
 }

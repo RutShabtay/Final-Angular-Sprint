@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { UsersDataService } from '../users-data.service';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login-form',
@@ -16,18 +17,34 @@ import { Router } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css'
 })
+
 export class LoginFormComponent {
   loginForm = this.fb.group({
     name: ['', [Validators.required]],
     password: ['', [Validators.required]]
   });
 
+  signUpForm = this.fb.group({
+    nameSignUp: ['', [Validators.required]],
+    passwordSignUp: ['', [Validators.required]],
+    roleSignUp: ['', [Validators.required, Validators.pattern(/^(Registration Secretary|Gym Teacher)$/)]]
+  });
+
   constructor(private fb: FormBuilder, private userDataService: UsersDataService, private router: Router) { }
+  showForm = false;
+
+  submitForm() {
+    this.userDataService.AddUser(this.signUpForm.value.nameSignUp!, this.signUpForm.value.passwordSignUp!, this.signUpForm.value.roleSignUp!);
+    console.log('User submitted:', this.signUpForm.value.nameSignUp);
+
+    this.showForm = false;
+  }
 
   hide = signal(true);
   clickEvent(event: MouseEvent) {

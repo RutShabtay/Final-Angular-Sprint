@@ -38,4 +38,12 @@ export class UsersDataService {
     const user = this.users.find(user => user.username === username && user.password === password);
     return user ? { ...user } : null;
   }
+  AddUser(userName: string, password: string, role: string): void {
+    const newUser: User = {
+      username: userName,
+      password: password,
+      role: role as 'Registration Secretary' | 'Gym Teacher'
+    }
+    this.users.push(newUser);
+  }
 }
