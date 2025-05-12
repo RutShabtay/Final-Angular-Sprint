@@ -4,7 +4,6 @@ import { ColDef } from 'ag-grid-community';
 import { ModuleRegistry } from 'ag-grid-community';
 import { ClientSideRowModelModule } from 'ag-grid-community';
 import { AgChartOptions } from 'ag-charts-community';
-import { AgChartsAngularModule } from 'ag-charts-angular'; 
 
 
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -71,29 +70,4 @@ export class RegistrationFormComponent {
     { firstName: 'Tzila', familyName: 'Sharvit', phoneNumber: '056-8800991', id: '159486327', courseName: 'Drama Workshop', coursePrice: 460, isPayed: true },
     { firstName: 'Bracha', familyName: 'Yosef', phoneNumber: '055-2233445', id: '753456789', courseName: 'Chemistry Basics', coursePrice: 430, isPayed: false }
   ];
-
-
-  lessonType: Map<string, number> = new Map<string, number>();
-  chartData: { lesson: string, count: number }[] = [];
-  public chartOptions: AgChartOptions | undefined;
-
-  constructor() {
-
-    this.rowData.forEach((elem) => {
-      const lesson = elem.courseName;
-      const count = this.lessonType.get(lesson) || 0;
-      this.lessonType.set(lesson, count + 1);
-    });
-
-    this.chartData = Array.from(this.lessonType.entries()).map(([lesson, count]) => ({
-      lesson,
-      count
-    }));
-
-    this.chartOptions = {
-      data: this.chartData,
-      series: [{ type: 'bar', xKey:'lesson', yKey: 'count' }]
-    }
-  }
-
 }
