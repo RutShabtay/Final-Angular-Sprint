@@ -1,0 +1,54 @@
+:host {
+    background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+#title {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.table-wrapper {
+    height: 500px;
+    width: 100%;
+    max-width: 970px;
+    border-radius: 16px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+}
+
+.ag-theme-alpine.custom-grid .ag-header {
+    background-color: #f3f3f3;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.ag-theme-alpine.custom-grid .ag-cell {
+    font-size: 13px;
+    padding: 10px;
+    color: #444;
+}
+
+.ag-theme-alpine.custom-grid button {
+    background-color: #26a69a;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ag-theme-alpine.custom-grid button:hover {
+    background-color: #00796b;
+}
